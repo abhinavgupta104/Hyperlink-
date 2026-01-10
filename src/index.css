@@ -7,7 +7,7 @@
 @layer base {
   :root {
     /* Brand Colors from Logo - Hyperlink SMS */
-    /* Sky Blue: #56C5DC, Magenta: #D91A8F, Gold: #F5A623, Deep Green: #1A6B52 */
+    /* Sky Blue: #56C5DC, Gold: #F5A623, Deep Green: #1A6B52 */
     
     /* Core Light Theme */
     --background: 150 20% 98%;
@@ -30,8 +30,8 @@
     --muted: 150 15% 92%;
     --muted-foreground: 160 20% 45%;
 
-    /* Accent - Brand Magenta (vibrant, eye-catching) */
-    --accent: 324 80% 48%;
+    /* Accent - Brand Sky Blue (vibrant, eye-catching) */
+    --accent: 190 65% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -39,39 +39,38 @@
 
     --border: 150 15% 88%;
     --input: 150 15% 88%;
-    --ring: 324 80% 48%;
+    --ring: 190 65% 50%;
 
     --radius: 0.75rem;
 
     /* Brand Palette */
     --brand-green: 160 56% 22%;
-    --brand-magenta: 324 80% 48%;
+    --brand-sky: 190 65% 50%;
     --brand-gold: 38 92% 55%;
-    --brand-sky: 190 65% 60%;
 
     /* Service Colors - Updated with brand palette */
     --sms: 160 56% 35%;
     --sms-foreground: 0 0% 100%;
-    --rcs: 324 80% 48%;
+    --rcs: 190 65% 50%;
     --rcs-foreground: 0 0% 100%;
     --whatsapp: 142 70% 45%;
     --whatsapp-foreground: 0 0% 100%;
     --voice: 38 92% 55%;
     --voice-foreground: 160 56% 15%;
-    --otp: 190 65% 50%;
+    --otp: 200 70% 50%;
     --otp-foreground: 0 0% 100%;
 
     /* Node Graph Colors */
     --node-bg: 0 0% 100%;
     --node-border: 150 15% 85%;
-    --node-active: 324 80% 48%;
+    --node-active: 190 65% 50%;
     --connector: 150 15% 75%;
-    --connector-active: 324 80% 48%;
+    --connector-active: 190 65% 50%;
 
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(160 56% 22%) 0%, hsl(160 56% 28%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(324 80% 48%) 0%, hsl(324 80% 58%) 100%);
-    --gradient-brand: linear-gradient(135deg, hsl(190 65% 60%) 0%, hsl(324 80% 48%) 50%, hsl(38 92% 55%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(190 65% 50%) 0%, hsl(190 65% 60%) 100%);
+    --gradient-brand: linear-gradient(135deg, hsl(160 56% 30%) 0%, hsl(190 65% 50%) 50%, hsl(38 92% 55%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(150 20% 98%) 0%, hsl(150 20% 95%) 100%);
 
     /* Shadows */
@@ -79,9 +78,9 @@
     --shadow-md: 0 4px 6px -1px hsl(160 56% 22% / 0.07), 0 2px 4px -2px hsl(160 56% 22% / 0.05);
     --shadow-lg: 0 10px 15px -3px hsl(160 56% 22% / 0.08), 0 4px 6px -4px hsl(160 56% 22% / 0.05);
     --shadow-xl: 0 20px 25px -5px hsl(160 56% 22% / 0.1), 0 8px 10px -6px hsl(160 56% 22% / 0.05);
-    --shadow-node: 0 4px 20px -2px hsl(324 80% 48% / 0.2);
+    --shadow-node: 0 4px 20px -2px hsl(190 65% 50% / 0.2);
     --shadow-card: 0 1px 3px 0 hsl(160 56% 22% / 0.04), 0 1px 2px -1px hsl(160 56% 22% / 0.04);
-    --shadow-glow: 0 0 20px hsl(324 80% 48% / 0.15);
+    --shadow-glow: 0 0 20px hsl(190 65% 50% / 0.15);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 160 56% 22%;
@@ -90,7 +89,7 @@
     --sidebar-accent: 150 20% 95%;
     --sidebar-accent-foreground: 160 56% 22%;
     --sidebar-border: 150 15% 88%;
-    --sidebar-ring: 324 80% 48%;
+    --sidebar-ring: 190 65% 50%;
   }
 
   .dark {
@@ -113,8 +112,8 @@
     --muted: 160 25% 15%;
     --muted-foreground: 150 15% 65%;
 
-    /* Accent stays vibrant in dark mode */
-    --accent: 324 85% 55%;
+    /* Accent stays vibrant sky blue in dark mode */
+    --accent: 190 70% 55%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62% 45%;
@@ -122,41 +121,41 @@
 
     --border: 160 25% 18%;
     --input: 160 25% 18%;
-    --ring: 324 85% 55%;
+    --ring: 190 70% 55%;
 
     /* Service colors adjusted for dark */
     --sms: 160 60% 45%;
-    --rcs: 324 85% 60%;
+    --rcs: 190 70% 55%;
     --whatsapp: 142 70% 50%;
     --voice: 38 95% 60%;
-    --otp: 190 70% 55%;
+    --otp: 200 75% 55%;
 
     --node-bg: 160 30% 11%;
     --node-border: 160 25% 20%;
-    --node-active: 324 85% 55%;
+    --node-active: 190 70% 55%;
     --connector: 160 25% 28%;
-    --connector-active: 324 85% 55%;
+    --connector-active: 190 70% 55%;
 
     --gradient-hero: linear-gradient(135deg, hsl(160 30% 7%) 0%, hsl(160 30% 12%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(324 85% 55%) 0%, hsl(324 85% 65%) 100%);
-    --gradient-brand: linear-gradient(135deg, hsl(190 70% 50%) 0%, hsl(324 85% 55%) 50%, hsl(38 95% 55%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(190 70% 55%) 0%, hsl(190 70% 65%) 100%);
+    --gradient-brand: linear-gradient(135deg, hsl(160 50% 35%) 0%, hsl(190 70% 55%) 50%, hsl(38 95% 55%) 100%);
 
     --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
     --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.4), 0 2px 4px -2px hsl(0 0% 0% / 0.3);
     --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.5), 0 4px 6px -4px hsl(0 0% 0% / 0.4);
     --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.5), 0 8px 10px -6px hsl(0 0% 0% / 0.4);
-    --shadow-node: 0 4px 25px -2px hsl(324 85% 55% / 0.25);
+    --shadow-node: 0 4px 25px -2px hsl(190 70% 55% / 0.25);
     --shadow-card: 0 2px 8px 0 hsl(0 0% 0% / 0.2);
-    --shadow-glow: 0 0 30px hsl(324 85% 55% / 0.2);
+    --shadow-glow: 0 0 30px hsl(190 70% 55% / 0.2);
 
     --sidebar-background: 160 30% 8%;
     --sidebar-foreground: 150 15% 95%;
-    --sidebar-primary: 324 85% 55%;
+    --sidebar-primary: 190 70% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 160 25% 14%;
     --sidebar-accent-foreground: 150 15% 95%;
     --sidebar-border: 160 25% 18%;
-    --sidebar-ring: 324 85% 55%;
+    --sidebar-ring: 190 70% 55%;
   }
 }
 
