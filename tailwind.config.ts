@@ -60,6 +60,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Brand Colors
+        brand: {
+          green: "hsl(var(--brand-green))",
+          magenta: "hsl(var(--brand-magenta))",
+          gold: "hsl(var(--brand-gold))",
+          sky: "hsl(var(--brand-sky))",
+        },
         // Service Colors
         sms: {
           DEFAULT: "hsl(var(--sms))",
@@ -104,6 +111,7 @@ export default {
         'xl': 'var(--shadow-xl)',
         'node': 'var(--shadow-node)',
         'card': 'var(--shadow-card)',
+        'glow': 'var(--shadow-glow)',
       },
       keyframes: {
         "accordion-down": {
@@ -138,6 +146,14 @@ export default {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        "glow": {
+          "0%": { boxShadow: "0 0 10px hsl(var(--accent) / 0.3)" },
+          "100%": { boxShadow: "0 0 25px hsl(var(--accent) / 0.5)" },
+        },
+        "connector-flow": {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -148,6 +164,8 @@ export default {
         "slide-in-right": "slide-in-right 0.5s ease-out forwards",
         "pulse-soft": "pulse-soft 2s ease-in-out infinite",
         "float": "float 3s ease-in-out infinite",
+        "glow": "glow 2s ease-in-out infinite alternate",
+        "connector-flow": "connector-flow 2s linear infinite",
       },
     },
   },

@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
+import logoImage from "@/assets/logo-hyperlink-sms.png";
+import { LegalModal } from "@/components/ui/LegalModal";
+import { useState } from "react";
 
 const footerLinks = {
   services: [
@@ -15,26 +18,23 @@ const footerLinks = {
     { name: "Security & Compliance", href: "/security" },
     { name: "Contact", href: "/contact" },
   ],
-  legal: [
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Terms of Service", href: "/terms" },
-    { name: "DLT Compliance", href: "/security#dlt" },
-    { name: "GDPR", href: "/security#gdpr" },
-  ],
 };
 
+type LegalType = "privacy" | "terms" | "dlt" | "gdpr" | null;
+
 export function Footer() {
+  const [openLegal, setOpenLegal] = useState<LegalType>(null);
+
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-primary text-primary-foreground transition-colors duration-300">
       <div className="container-enterprise section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-lg">H</span>
+            <Link to="/" className="flex items-center gap-3 mb-6 group">
+              <div className="bg-white/10 p-2 rounded-lg backdrop-blur-sm group-hover:bg-white/20 transition-colors">
+                <img src={logoImage} alt="Hyperlink SMS" className="h-8 w-auto" />
               </div>
-              <span className="text-xl font-bold">Hyperlink</span>
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-6 max-w-sm">
               Enterprise messaging infrastructure for businesses of all sizes. 
@@ -94,16 +94,38 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <button
+                  onClick={() => setOpenLegal("privacy")}
+                  className="text-sm text-primary-foreground/70 hover:text-accent transition-colors text-left"
+                >
+                  Privacy Policy
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setOpenLegal("terms")}
+                  className="text-sm text-primary-foreground/70 hover:text-accent transition-colors text-left"
+                >
+                  Terms of Service
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setOpenLegal("dlt")}
+                  className="text-sm text-primary-foreground/70 hover:text-accent transition-colors text-left"
+                >
+                  DLT Compliance
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setOpenLegal("gdpr")}
+                  className="text-sm text-primary-foreground/70 hover:text-accent transition-colors text-left"
+                >
+                  GDPR
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -112,7 +134,7 @@ export function Footer() {
         <div className="mt-16 pt-8 border-t border-primary-foreground/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-primary-foreground/50">
-              © {new Date().getFullYear()} Hyperlink. All rights reserved.
+              © {new Date().getFullYear()} Hyperlink SMS. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <span className="text-xs text-primary-foreground/50 flex items-center gap-2">
@@ -123,6 +145,13 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Legal Modals */}
+      <LegalModal
+        type={openLegal}
+        isOpen={openLegal !== null}
+        onClose={() => setOpenLegal(null)}
+      />
     </footer>
   );
 }
