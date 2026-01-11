@@ -208,7 +208,7 @@ export function HeroSection() {
               alt="Hyperlink SMS" 
               className="w-full max-w-md lg:max-w-lg xl:max-w-xl h-auto object-contain"
             />
-            <p className="mt-6 text-muted-foreground text-center lg:text-left text-lg md:text-xl max-w-md">
+            <p className="mt-6 text-muted-foreground/80 text-center lg:text-left text-lg md:text-xl max-w-md font-light tracking-wide leading-relaxed">
               Enterprise-grade SMS infrastructure with guaranteed delivery
             </p>
           </div>
