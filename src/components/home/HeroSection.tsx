@@ -7,6 +7,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
+import heroLogo from "@/assets/hyperlink-sms-logo-hero.png";
 
 const heroCards = [
   {
@@ -63,28 +64,28 @@ function HeroCard({ headline, subtext, footer, isActive, index }: HeroCardProps)
   return (
     <div
       className={cn(
-        "relative bg-card rounded-[18px] p-8 md:p-12 transition-all duration-500 ease-out",
+        "relative bg-card rounded-[18px] p-6 md:p-8 transition-all duration-500 ease-out",
         "border border-border/50",
         "shadow-[0_4px_24px_-4px_hsl(var(--primary)/0.08)]",
         isActive ? "scale-100 opacity-100" : "scale-[0.95] opacity-60"
       )}
-      style={{ minHeight: "320px" }}
+      style={{ minHeight: "280px" }}
     >
       {/* Subtle accent indicator */}
       <div 
-        className="absolute top-6 left-8 w-2 h-2 rounded-full bg-primary/60"
+        className="absolute top-5 left-6 w-2 h-2 rounded-full bg-primary/60"
         style={{ 
           animationDelay: `${index * 100}ms`,
         }}
       />
 
-      <div className="pt-6 flex flex-col h-full justify-between">
+      <div className="pt-4 flex flex-col h-full justify-between">
         {/* Headline */}
         <div>
           <h2
             key={`headline-${animationKey}`}
             className={cn(
-              "text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground leading-tight mb-6",
+              "text-xl md:text-2xl lg:text-3xl font-semibold text-foreground leading-tight mb-4",
               isActive && "animate-hero-headline"
             )}
           >
@@ -97,7 +98,7 @@ function HeroCard({ headline, subtext, footer, isActive, index }: HeroCardProps)
               <p
                 key={`line-${animationKey}-${lineIndex}`}
                 className={cn(
-                  "text-base md:text-lg text-muted-foreground leading-relaxed",
+                  "text-sm md:text-base text-muted-foreground leading-relaxed",
                   isActive && "animate-hero-subtext"
                 )}
                 style={{
@@ -114,7 +115,7 @@ function HeroCard({ headline, subtext, footer, isActive, index }: HeroCardProps)
         <p
           key={`footer-${animationKey}`}
           className={cn(
-            "text-sm font-medium text-primary/80 mt-8 tracking-wide",
+            "text-xs md:text-sm font-medium text-primary/80 mt-6 tracking-wide",
             isActive && "animate-hero-footer"
           )}
         >
@@ -157,7 +158,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-background"
+      className="relative min-h-[80vh] flex items-center overflow-hidden bg-background"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -196,85 +197,101 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="container-enterprise relative z-10 py-16 md:py-24">
-        {/* Carousel */}
-        <div className="relative max-w-4xl mx-auto">
-          <Carousel
-            setApi={setApi}
-            opts={{
-              align: "center",
-              loop: true,
-            }}
-            className="w-full cursor-grab active:cursor-grabbing"
-          >
-            <CarouselContent className="-ml-4 md:-ml-8">
-              {heroCards.map((card, index) => (
-                <CarouselItem
-                  key={index}
-                  className="pl-4 md:pl-8 basis-[85%] md:basis-[75%] lg:basis-[65%]"
-                >
-                  <HeroCard
-                    headline={card.headline}
-                    subtext={card.subtext}
-                    footer={card.footer}
-                    isActive={current === index}
-                    index={index}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
+      <div className="container-enterprise relative z-10 py-12 md:py-20">
+        {/* Split Layout: Logo Left, Cards Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          
+          {/* Left Side - Big Logo */}
+          <div className="flex flex-col items-center lg:items-start justify-center order-2 lg:order-1">
+            <img 
+              src={heroLogo} 
+              alt="Hyperlink SMS" 
+              className="w-full max-w-md lg:max-w-lg xl:max-w-xl h-auto object-contain"
+            />
+            <p className="mt-6 text-muted-foreground text-center lg:text-left text-lg md:text-xl max-w-md">
+              Enterprise-grade SMS infrastructure with guaranteed delivery
+            </p>
+          </div>
 
-            {/* Navigation Arrows - show on hover */}
-            <button
-              onClick={scrollPrev}
-              className={cn(
-                "absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20",
-                "w-10 h-10 md:w-12 md:h-12 rounded-full",
-                "bg-card/90 backdrop-blur-sm border border-border/50",
-                "flex items-center justify-center",
-                "text-foreground/60 hover:text-foreground hover:bg-card",
-                "transition-all duration-300 ease-out",
-                "shadow-md hover:shadow-lg",
-                isHovered ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
-              )}
-              aria-label="Previous slide"
+          {/* Right Side - Card Carousel */}
+          <div className="relative order-1 lg:order-2">
+            <Carousel
+              setApi={setApi}
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+              className="w-full cursor-grab active:cursor-grabbing"
             >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+              <CarouselContent className="-ml-3 md:-ml-4">
+                {heroCards.map((card, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="pl-3 md:pl-4 basis-[90%] md:basis-[85%]"
+                  >
+                    <HeroCard
+                      headline={card.headline}
+                      subtext={card.subtext}
+                      footer={card.footer}
+                      isActive={current === index}
+                      index={index}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
 
-            <button
-              onClick={scrollNext}
-              className={cn(
-                "absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20",
-                "w-10 h-10 md:w-12 md:h-12 rounded-full",
-                "bg-card/90 backdrop-blur-sm border border-border/50",
-                "flex items-center justify-center",
-                "text-foreground/60 hover:text-foreground hover:bg-card",
-                "transition-all duration-300 ease-out",
-                "shadow-md hover:shadow-lg",
-                isHovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2"
-              )}
-              aria-label="Next slide"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </Carousel>
-
-          {/* Pagination Dots */}
-          <div className="flex items-center justify-center gap-2 mt-8">
-            {heroCards.map((_, index) => (
+              {/* Navigation Arrows - show on hover */}
               <button
-                key={index}
-                onClick={() => scrollTo(index)}
+                onClick={scrollPrev}
                 className={cn(
-                  "relative h-2 rounded-full transition-all duration-300 ease-out",
-                  current === index
-                    ? "w-8 bg-primary"
-                    : "w-2 bg-border hover:bg-muted-foreground/30"
+                  "absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 z-20",
+                  "w-9 h-9 md:w-10 md:h-10 rounded-full",
+                  "bg-card/90 backdrop-blur-sm border border-border/50",
+                  "flex items-center justify-center",
+                  "text-foreground/60 hover:text-foreground hover:bg-card",
+                  "transition-all duration-300 ease-out",
+                  "shadow-md hover:shadow-lg",
+                  isHovered ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
                 )}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={scrollNext}
+                className={cn(
+                  "absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 z-20",
+                  "w-9 h-9 md:w-10 md:h-10 rounded-full",
+                  "bg-card/90 backdrop-blur-sm border border-border/50",
+                  "flex items-center justify-center",
+                  "text-foreground/60 hover:text-foreground hover:bg-card",
+                  "transition-all duration-300 ease-out",
+                  "shadow-md hover:shadow-lg",
+                  isHovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2"
+                )}
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </Carousel>
+
+            {/* Pagination Dots */}
+            <div className="flex items-center justify-center gap-2 mt-6">
+              {heroCards.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollTo(index)}
+                  className={cn(
+                    "relative h-2 rounded-full transition-all duration-300 ease-out",
+                    current === index
+                      ? "w-6 bg-primary"
+                      : "w-2 bg-border hover:bg-muted-foreground/30"
+                  )}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
