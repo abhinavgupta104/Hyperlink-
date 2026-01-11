@@ -7,7 +7,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
-import heroLogo from "@/assets/hyperlink-sms-logo-hero.png";
+import heroLogo from "@/assets/logo-hyperlink-sms.png";
 
 const heroCards = [
   {
