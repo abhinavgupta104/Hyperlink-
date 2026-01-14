@@ -165,8 +165,8 @@ export function Footer() {
                 Developed by
               </span>
               <FooterTextGlitch
-                text="Abhinav Gupta"
-                hoverText="ABHINAV GUPTA"
+                text="Abhinav Gupta and Sarthak Gupta"
+                hoverText="ABHINAV GUPTA AND SARTHAK GUPTA"
                 size="sm"
               />
             </div>
